@@ -41,7 +41,7 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
         exposure: '1',
         'shadow-softness': '0',
         'animation-name': '',
-        'ar-scale': 'auto',
+        'ar-scale': '0.1',
         'ar-placement': 'floor',
         'ar-button': true,
         loading: 'eager',
