@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos adicionales para model-viewer */
+model-viewer {
+  --poster-color: transparent;
+  --progress-bar-color: #3b82f6;
+  --progress-mask: #e5e7eb;
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+  model-viewer {
+    --progress-bar-height: 3px;
+  }
+} 

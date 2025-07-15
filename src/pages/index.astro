@@ -1,0 +1,64 @@
+---
+import ModelAR from '../components/ModelAR';
+import '../styles/global.css';
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Modelo 3D en Realidad Aumentada</title>
+		<meta name="description" content="Visualiza modelos 3D en realidad aumentada usando model-viewer" />
+	</head>
+	<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+		<div class="container mx-auto px-4 py-8">
+			<header class="text-center mb-8">
+				<h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+					🚀 Modelo 3D en AR
+				</h1>
+				<p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+					Explora este modelo 3D en realidad aumentada. Usa el botón "Ver en AR" para activar la cámara en tu dispositivo móvil.
+				</p>
+			</header>
+
+			<main class="max-w-4xl mx-auto">
+				<div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+					<div class="p-4 md:p-6">
+						<h2 class="text-2xl font-semibold text-gray-800 mb-4">
+							Astronauta en Realidad Aumentada
+						</h2>
+						<div class="relative">
+							<ModelAR 
+								client:load
+								src="/modelo.glb" 
+								alt="Modelo 3D de un astronauta"
+								className="w-full h-96 md:h-[500px] rounded-lg"
+							/>
+						</div>
+						
+						<div class="mt-6 p-4 bg-blue-50 rounded-lg">
+							<h3 class="text-lg font-semibold text-blue-800 mb-2">
+								💡 Instrucciones:
+							</h3>
+							<ul class="text-blue-700 space-y-1 text-sm md:text-base">
+								<li>• <strong>En móvil:</strong> Toca "Ver en AR" para activar la cámara</li>
+								<li>• <strong>En desktop:</strong> Usa el mouse para rotar y hacer zoom</li>
+								<li>• <strong>Controles:</strong> Arrastra para rotar, scroll para zoom</li>
+								<li>• <strong>AR:</strong> Solo funciona en dispositivos compatibles con AR</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-8 text-center">
+					<p class="text-gray-600 text-sm">
+						Powered by <a href="https://modelviewer.dev" class="text-blue-600 hover:underline">Google Model Viewer</a> 
+						and <a href="https://astro.build" class="text-blue-600 hover:underline">Astro</a>
+					</p>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
