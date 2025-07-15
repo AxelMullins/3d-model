@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface ModelARProps {
   src: string;
@@ -7,6 +7,8 @@ interface ModelARProps {
 }
 
 const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "" }) => {
+  const modelViewerRef = useRef<any>(null);
+
   useEffect(() => {
     // Cargar el script de model-viewer dinámicamente
     const script = document.createElement('script');
@@ -19,6 +21,28 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
       document.head.appendChild(script);
     }
 
+    // Configurar el modelo cuando se carga
+    script.onload = () => {
+      if (modelViewerRef.current) {
+        const modelViewer = modelViewerRef.current;
+        
+        // Ajustar el posicionamiento AR
+        modelViewer.addEventListener('ar-status', (event: any) => {
+          if (event.detail.status === 'session-started') {
+            // Forzar posicionamiento en el suelo con offset negativo
+            modelViewer.setAttribute('ar-placement', 'floor');
+            modelViewer.setAttribute('ar-vertical-offset', '-0.5');
+            
+            // Ajustar la escala y posición
+            setTimeout(() => {
+              modelViewer.setAttribute('ar-scale', '0.1');
+              modelViewer.setAttribute('ar-placement', 'floor');
+            }, 100);
+          }
+        });
+      }
+    };
+
     return () => {
       // Cleanup si es necesario
     };
@@ -27,6 +51,7 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
   return (
     <div className={`w-full h-full min-h-[400px] ${className}`}>
       {React.createElement('model-viewer', {
+        ref: modelViewerRef,
         src: src,
         alt: alt,
         ar: true,
@@ -46,12 +71,16 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
         'ar-button': true,
         loading: 'eager',
         reveal: 'auto',
-        // Configuraciones optimizadas para mejor posicionamiento AR
+        // Configuraciones optimizadas para forzar posicionamiento en el suelo
         'ar-hit-test': 'auto',
         'ar-smooth-transition': true,
         'ar-tracking': 'stable',
-        'ar-vertical-offset': '0',
+        'ar-vertical-offset': '-0.5',
         'ar-surface-estimation': 'auto',
+        // Nuevas propiedades para mejor posicionamiento
+        'ar-ground-plane': 'floor',
+        'ar-placement-mode': 'floor',
+        'ar-anchor': 'floor',
         style: {
           width: '100%',
           height: '100%',
