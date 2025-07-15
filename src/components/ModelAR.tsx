@@ -75,7 +75,7 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
         'ar-hit-test': 'auto',
         'ar-smooth-transition': true,
         'ar-tracking': 'stable',
-        'ar-vertical-offset': '-0.5',
+        'ar-vertical-offset': '-2.5',
         'ar-surface-estimation': 'auto',
         // Nuevas propiedades para mejor posicionamiento
         'ar-ground-plane': 'floor',
