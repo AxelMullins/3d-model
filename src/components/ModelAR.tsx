@@ -33,9 +33,8 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
             modelViewer.setAttribute('ar-placement', 'floor');
             modelViewer.setAttribute('ar-vertical-offset', '-0.5');
             
-            // Ajustar la escala y posición
+            // No forzar escala, dejar que use el valor definido
             setTimeout(() => {
-              modelViewer.setAttribute('ar-scale', '0.1');
               modelViewer.setAttribute('ar-placement', 'floor');
             }, 100);
           }
@@ -66,7 +65,7 @@ const ModelAR: React.FC<ModelARProps> = ({ src, alt = "Modelo 3D", className = "
         exposure: '1',
         'shadow-softness': '0',
         'animation-name': '',
-        'ar-scale': '2.0',
+        'ar-scale': '0.01',
         'ar-placement': 'floor',
         'ar-button': true,
         loading: 'eager',
