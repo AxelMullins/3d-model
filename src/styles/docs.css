@@ -1,0 +1,115 @@
+/* Estilos específicos para documentación */
+
+/* Personalización de Tailwind Typography */
+.prose {
+  max-width: none !important;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose h1 {
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.prose h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.prose h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.prose p {
+  margin-bottom: 0.75rem;
+}
+
+.prose ul {
+  margin-bottom: 0.75rem;
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+/* Estilos para enlaces externos */
+.prose a[href^="http"]::after {
+  content: " ↗";
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Estilos para bloques de información */
+.info-block {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.info-block h4 {
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Estilos para la navegación */
+.nav-link {
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+/* Estilos para menú móvil */
+@media (max-width: 768px) {
+  .nav-link:hover {
+    transform: none;
+  }
+  
+  #mobile-menu {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #mobile-menu.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  #mobile-menu:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejoras para bloques de código */
+.prose pre {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose code {
+  background-color: #f1f5f9;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #dc2626;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #fff;
+}
